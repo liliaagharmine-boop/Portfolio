@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lilia AGHARMINE | Portfolio BTS SIO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #d946ef; /* Rose vibrant */
+            --secondary: #8b5cf6; /* Violet */
+            --accent: #3b82f6; /* Bleu */
+            --bg-night: #0a0a2e; /* Bleu nuit foncé */
+            --bg-card: rgba(15, 23, 42, 0.6);
+            --text-primary: #ffffff;
+            --text-secondary: #cbd5e1;
+            --holo-border: linear-gradient(90deg, #d946ef, #8b5cf6, #3b82f6, #d946ef);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-night);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Fond éclairci : Bleu nuit, Violet et Rose */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 10% 10%, rgba(217, 70, 239, 0.15) 0%, transparent 45%),
+                radial-gradient(circle at 90% 90%, rgba(59, 130, 246, 0.15) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0a2e 0%, #1e1b4b 100%);
+            z-index: -1;
+        }
+
+        /* EFFET ILLUMINATION BLANCHE AU SURVOL */
+        .card, .skill-tag, .suite-card, .welcome-badge {
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card:hover, .skill-tag:hover, .suite-card:hover, .welcome-badge:hover {
+            border-color: #ffffff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        /* SECTION ACCUEIL */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .welcome-badge {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 25px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-bottom: 35px;
+        }
+
+        .hero-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(3.5rem, 9vw, 6rem);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 30px;
+        }
+
+        .hero-name span:first-child { color: #fdf2ff; text-shadow: 0 0 20px rgba(217, 70, 239, 0.3); }
+        .hero-name span:last-child { 
+            background: linear-gradient(to right, #8b5cf6, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            max-width: 850px;
+            color: var(--text-secondary);
+            margin-bottom: 45px;
+        }
+
+        .skills-container { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 24px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            padding: 1rem; display: flex; justify-content: center;
+            flex-wrap: wrap; gap: 0.5rem; background: rgba(10, 10, 46, 0.9);
+            backdrop-filter: blur(15px); border-bottom: 1px solid rgba(217, 70, 239, 0.2);
+        }
+
+        nav a { color: var(--text-secondary); text-decoration: none; padding: 0.5rem 1rem; font-size: 0.8rem; font-weight: 600; transition: 0.3s; }
+        nav a:hover { color: var(--primary); }
+
+        section { padding: 100px 2rem; max-width: 1100px; margin: auto; }
+
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header h2 { font-family: 'Poppins', sans-serif; font-size: 3rem; letter-spacing: 4px; margin-bottom: 1rem; }
+        .underline { width: 100px; height: 4px; background: var(--holo-border); margin: 0 auto; border-radius: 10px; background-size: 300% 100%; animation: holoShift 5s linear infinite; }
+        @keyframes holoShift { 0% {background-position: 0% 50%} 100% {background-position: 100% 50%} }
+
+        .card { background: var(--bg-card); padding: 2.5rem; border-radius: 24px; backdrop-filter: blur(20px); margin-bottom: 2rem; }
+        h3 { font-family: 'Poppins', sans-serif; margin-bottom: 1.5rem; color: #60a5fa; }
+        
+        ul { list-style: none; margin: 1rem 0; }
+        ul li { padding-left: 1.5rem; position: relative; color: var(--text-secondary); margin-bottom: 0.8rem; }
+        ul li::before { content: '✦'; position: absolute; left: 0; color: var(--primary); }
+
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        embed { width: 100%; height: 500px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); }
+
+        .btn-download { 
+            display: inline-flex; align-items: center; gap: 10px; margin-top: 1.5rem; 
+            padding: 0.9rem 2.5rem; background: var(--holo-border); color: white; 
+            text-decoration: none; border-radius: 12px; font-weight: 700; background-size: 200% 100%; transition: 0.3s;
+        }
+        .btn-download:hover { background-position: 100% 0; transform: scale(1.05); box-shadow: 0 0 20px var(--primary); }
+
+        .suite-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; }
+        .suite-card { text-align: center; border: 1px solid rgba(217, 70, 239, 0.3); background: rgba(217, 70, 239, 0.05); padding: 2rem; border-radius: 24px; }
+
+        footer { text-align: center; padding: 4rem; color: var(--text-secondary); font-size: 0.9rem; }
+
+        @media (max-width: 768px) { .hero-name { font-size: 3rem; } .section-header h2 { font-size: 2rem; } embed { height: 400px; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#home">ACCUEIL</a>
+    <a href="#bts-sio">BTS SIO</a>
+    <a href="#cv">CV</a>
+    <a href="#entreprise">ENTREPRISE</a>
+    <a href="#projets-ecole">PROJETS ÉCOLE</a>
+    <a href="#projets-pro">PROJETS PRO</a>
+    <a href="#veille">VEILLE</a>
+    <a href="#tableau">RÉALISATIONS</a>
+    <a href="#suite">ET LA SUITE ?</a>
+    <a href="#contact">CONTACT</a>
+</nav>
+
+<!-- ACCUEIL STYLE IMAGE -->
+<section id="home" class="hero-section">
+    <div class="welcome-badge">👋 Bienvenue sur mon portfolio</div>
+    
+    <h1 class="hero-name">
+        <span>Lilia</span> <span>AGHARMINE</span>
+    </h1>
+
+    <p class="hero-subtitle">
+        Étudiante en BTS SIO option SISR, passionnée par les infrastructures systèmes et réseaux. En alternance chez Exponens.
+    </p>
+
+    <div class="skills-container">
+        <div class="skill-tag"><i class="fas fa-desktop"></i> Systèmes</div>
+        <div class="skill-tag"><i class="fas fa-network-wired"></i> Réseaux</div>
+        <div class="skill-tag"><i class="fas fa-lock"></i> Cybersécurité</div>
+        <div class="skill-tag"><i class="fas fa-tools"></i> Support IT</div>
+    </div>
+</section>
+
+<!-- BTS SIO -->
+<section id="bts-sio">
+    <div class="section-header">
+        <h2>BTS SIO</h2>
+        <div class="underline"></div>
+    </div>
+    <div class="card">
+        <p>Le BTS Services Informatiques aux Organisations est le résultat d’une rénovation en profondeur du BTS Informatique de Gestion. Il remplace ce dernier depuis la rentrée 2011.</p>
+        <br>
+        <h4>Les Objectifs du BTS SIO :</h4>
+        <p>Le diplômé du BTS SIO est formé à la mise en place de services informatiques en tant que salarié au sein des organisations (entreprises, administrations, PME, PMI, etc…) soit en tant que consultant d’une SSII, d’une société éditrice de logiciels ou d’une société de conseils.</p>
+        
+        <div class="project-grid" style="margin-top: 2rem;">
+            <div class="card" style="margin-bottom:0">
+                <h3>L'option SISR</h3>
+                <p>Le titulaire du BTS SIO SISR assure la fourniture de services informatiques en gérant l'infrastructure technique. Il intervient sur :</p>
+                <ul>
+                    <li>Installation & Sécurisation des serveurs, réseaux et équipements.</li>
+                    <li>Administration & Maintenance des parcs informatiques et des postes clients.</li>
+                    <li>Gestion des actifs et supervision des équipements d'interconnexion.</li>
+                    <li>Support & Résolution d'incidents pour garantir la qualité de service aux utilisateurs.</li>
+                </ul>
+            </div>
+            <div class="card" style="margin-bottom:0">
+                <h3>L'option SLAM</h3>
+                <p>À l'inverse de la SISR, l'option SLAM se concentre sur la création de solutions :</p>
+                <ul>
+                    <li>Conception & Développement d'applications (Web, Mobile, Desktop).</li>
+                    <li>Maintenance applicative : correction de bugs et ajout de fonctionnalités.</li>
+                    <li>Gestion de bases de données : modélisation et exploitation des données.</li>
+                    <li>Tests & Déploiement de solutions logicielles personnalisées.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CV -->
+<section id="cv">
+    <div class="section-header">
+        <h2>MON CV</h2>
+        <div class="underline"></div>
+    </div>
+    <div class="card">
+        <embed src="cv.pdf" type="application/pdf">
+        <center><a href="cv.pdf" class="btn-download" download><i class="fas fa-file-pdf"></i> TÉLÉCHARGER LE CV</a></center>
+    </div>
+</section>
+
+<!-- ENTREPRISE -->
+<section id="entreprise">
+    <div class="section-header">
+        <h2>MON ENTREPRISE</h2>
+        <div class="underline"></div>
+    </div>
+    <div class="card">
+        <h3>Alternant Support Informatique – Exponens</h3>
+        <p><strong>L'entreprise :</strong> Exponens est un groupe de conseil, d'audit et d'expertise comptable de premier plan en Île-de-France. Avec plus de 500 collaborateurs, l'enjeu informatique y est critique pour garantir la sécurité et la disponibilité des données financières des clients.</p>
+        <br>
+        <h4>Mes missions principales :</h4>
+        <ul>
+            <li><strong>Gestion du parc (GLPI) :</strong> Inventaire automatisé, déploiement de postes et upgrades matériels (RAM/SSD).</li>
+            <li><strong>Support Niveaux 1 & 2 :</strong> Résolution d'incidents via GLPI et assistance à distance avec TeamViewer.</li>
+            <li><strong>Administration Cloud :</strong> Gestion des comptes utilisateurs et des licences Microsoft 365.</li>
+            <li><strong>Optimisation :</strong> Refonte de la checklist de configuration pour standardiser l'arrivée des nouveaux collaborateurs.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- PROJETS ÉCOLE -->
+<section id="projets-ecole">
+    <div class="section-header">
+        <h2>MES PROJETS ÉCOLE</h2>
+        <div class="underline"></div>
+    </div>
+    <div class="project-grid">
+        <div class="card">
+            <h4>Installation Windows Server 2022</h4>
+            <embed src="projet_ecole1.pdf">
+            <a href="projet_ecole1.pdf" class="btn-download" download>CONSULTER</a>
+        </div>
+        <div class="card">
+            <h4>Services AD, DNS et DHCP</h4>
+            <embed src="projet_ecole2.pdf">
+            <a href="projet_ecole2.pdf" class="btn-download" download>CONSULTER</a>
+        </div>
+        <div class="card">
+            <h4>Déploiement GLPI sous Ubuntu</h4>
+            <embed src="projet_ecole3.pdf">
+            <a href="projet_ecole3.pdf" class="btn-download" download>CONSULTER</a>
+        </div>
+    </div>
+</section>
+
+<!-- PROJETS PRO -->
+<section id="projets-pro">
+    <div class="section-header">
+        <h2>MES PROJETS PRO</h2>
+        <div class="underline"></div>
+    </div>
+    <div class="card">
+        <h3>Refonte de la checklist de configuration PC</h3>
+        <p>Standardisation des processus techniques chez Exponens.</p>
+        <div class="project-grid" style="margin-top: 2rem;">
+            <div style="text-align: center;">
+                <p>État Initial (Avant)</p>
+                <embed src="checklist_avant.pdf" style="height: 300px;">
+                <a href="checklist_avant.pdf" class="btn-download" download>PDF AVANT</a>
+            </div>
+            <div style="text-align: center;">
+                <p>Version Optimisée (Après)</p>
+                <embed src="checklist_apres.pdf" style="height: 300px;">
+                <a href="checklist_apres.pdf" class="btn-download" download>PDF APRÈS</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VEILLE -->
+<section id="veille">
+    <div class="section-header">
+        <h2>VEILLE TECHNOLOGIQUE</h2>
+        <div class="underline"></div>
+    </div>
+    <div class="card">
+        <h3>Zero Trust Architecture</h3>
+        <p>Zero Trust est une stratégie de cybersécurité basée sur le principe : « ne jamais faire confiance par défaut, toujours vérifier ». Chaque utilisateur, appareil ou service est considéré comme non fiable par défaut, même au sein du réseau interne.</p>
+        <br>
+        <ul>
+            <li>🔒 Principes clés : Authentification forte (MFA), contrôle d’accès basé sur les rôles (RBAC), micro-segmentation, surveillance continue.</li>
+            <li>✅ Objectifs : Limiter les mouvements latéraux, détecter plus rapidement les attaques, renforcer la sécurité dans un environnement distribué.</li>
+            <li>🚀 Tendance actuelle : Intégration avec l’intelligence artificielle, Zero Trust Edge, automatisation du contrôle d’accès.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- TABLEAU -->
+<section id="tableau">
+    <div class="section-header">
+        <h2>TABLEAU DES REALISATIONS</h2>
+        <div class="underline"></div>
+    </div>
+    <div class="card">
+        <embed src="tableau_realisations.pdf">
+        <center><a href="tableau_realisations.pdf" class="btn-download" download><i class="fas fa-table"></i> TÉLÉCHARGER LE TABLEAU</a></center>
+    </div>
+</section>
+
+<!-- ET LA SUITE -->
+<section id="suite">
+    <div class="section-header">
+        <h2>ET LA SUITE ?</h2>
+        <div class="underline"></div>
+    </div>
+    <div class="suite-grid">
+        <div class="suite-card">
+            <i class="fas fa-university fa-3x" style="margin-bottom: 1.5rem; color: var(--primary);"></i>
+            <h3>L3 CNAM</h3>
+            <p>INFORMATIQUE GENERALE OPTION IA</p>
+        </div>
+        <div class="suite-card">
+            <i class="fas fa-car fa-3x" style="margin-bottom: 1.5rem; color: var(--accent);"></i>
+            <h3>GROUPE RENAULT</h3>
+            <p>ALTERNANCE ARCHITECTE SI</p>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="section-header">
+        <h2>CONTACT</h2>
+        <div class="underline"></div>
+    </div>
+    <div class="project-grid">
+        <a href="mailto:lilia.agharmine@gmail.com" style="text-decoration: none;" class="card">
+            <center><i class="fas fa-envelope fa-3x" style="color: var(--primary);"></i><br><br>lilia.agharmine@gmail.com</center>
+        </a>
+        <a href="https://www.linkedin.com/in/lilia-agharmine/" target="_blank" style="text-decoration: none;" class="card">
+            <center><i class="fab fa-linkedin fa-3x" style="color: var(--accent);"></i><br><br>PROFIL LINKEDIN</center>
+        </a>
+        <div class="card">
+            <center><i class="fas fa-phone fa-3x" style="color: #10b981;"></i><br><br>07 57 58 24 41</center>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Lilia AGHARMINE — Portfolio de Fin d'Études BTS SIO</p>
+</footer>
+
+</body>
+</html>
